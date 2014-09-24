@@ -1,0 +1,14 @@
+dirstack-back() {
+
+	if [[ -z "$_dirstack_pos" ]]; then
+		export _dirstack_pos=0
+	else
+		if [[ "$_dirstack_pos" -eq "$#dirstack" ]]; then
+			return;
+		fi
+	fi
+
+	export _dirstack_pos=$(( $_dirstack_pos + 1 ))
+	pushd +1 >/dev/null
+	zle reset-prompt
+}

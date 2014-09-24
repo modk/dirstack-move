@@ -1,0 +1,14 @@
+dirstack-fwd() {
+
+	if [[ -z "$_dirstack_pos" ]]; then
+		return
+	else
+		if [[ "$_dirstack_pos" -eq "0" ]]; then
+			return;
+	  fi
+	fi
+
+	export _dirstack_pos=$(( $_dirstack_pos - 1 ))
+	pushd -0 > /dev/null
+	zle reset-prompt
+}

@@ -1,0 +1,10 @@
+dirstack-up() {
+  if [[ "$PWD" == "/" ]]; then
+ 		return
+  fi
+	if [[ "0" -ne "$_dirstack_pos" ]]; then
+		export _dirstack_pos=0
+	fi
+	cd ..
+	zle reset-prompt
+}
